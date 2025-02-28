@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Purple Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Animation */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .background-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(138, 43, 226, 0.3);
+            border-radius: 50%;
+            box-shadow: 0 0 10px #b300ff, 0 0 20px #b300ff, 0 0 30px #b300ff;
+            animation: animate 15s linear infinite;
+        }
+
+        .background-animation span:nth-child(even) {
+            background: rgba(138, 43, 226, 0.1);
+            box-shadow: 0 0 10px #ff00e6, 0 0 20px #ff00e6, 0 0 30px #ff00e6;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: scale(0) translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) translateY(-800%) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            padding: 40px 20px;
+            z-index: 1;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #b300ff;
+            box-shadow: 0 0 15px #b300ff, 0 0 25px #b300ff;
+            margin-bottom: 20px;
+        }
+
+        .link-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .link-gif {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        .neon-link {
+            position: relative;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            padding: 15px 30px;
+            text-shadow: 0 0 5px #b300ff, 0 0 10px #b300ff;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .neon-link:hover {
+            color: #b300ff;
+            text-shadow: 0 0 5px #b300ff, 0 0 10px #b300ff, 0 0 15px #b300ff;
+        }
+
+        /* RGB Border Animation */
+        .neon-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid transparent;
+            animation: rgbBorder 2s linear infinite;
+            border-radius: 5px;
+            pointer-events: none;
+        }
+
+        @keyframes rgbBorder {
+            0% {
+                border-color: #ff0000;
+                box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+            }
+            25% {
+                border-color: #ffff00;
+                box-shadow: 0 0 5px #ffff00, 0 0 10px #ffff00;
+            }
+            50% {
+                border-color: #00ff00;
+                box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+            }
+            75% {
+                border-color: #00ffff;
+                box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+            }
+            100% {
+                border-color: #ff00ff;
+                box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 30px 10px;
+            }
+
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+
+            .neon-link {
+                font-size: 1.2rem;
+                padding: 12px 20px;
+            }
+
+            .link-gif {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 100%;
+                gap: 20px;
+            }
+
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+
+            .neon-link {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+
+            .link-gif {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation" id="background-animation"></div>
+
+    <div class="container">
+        <!-- Profile Picture -->
+        <img src="https://media.tenor.com/Tjve2aL1smUAAAAj/exploriot.gif" alt="Profile" class="profile-pic" id="profile-pic">
+
+        <!-- Links with GIFs -->
+        <div class="link-container">
+            <img src="/api/placeholder/50/50" alt="GIF" class="link-gif">
+            <a href="https://example.com/link1" class="neon-link">MY PORTFOLIO</a>
+            <img src="/api/placeholder/50/50" alt="GIF" class="link-gif">
+        </div>
+
+        <div class="link-container">
+            <img src="/api/placeholder/50/50" alt="GIF" class="link-gif">
+            <a href="https://example.com/link2" class="neon-link">MY YOUTUBE</a>
+            <img src="/api/placeholder/50/50" alt="GIF" class="link-gif">
+        </div>
+
+        <div class="link-container">
+            <img src="/api/placeholder/50/50" alt="GIF" class="link-gif">
+            <a href="https://example.com/link3" class="neon-link">MY TWITTER</a>
+            <img src="/api/placeholder/50/50" alt="GIF" class="link-gif">
+        </div>
+
+        <div class="link-container">
+            <img src="/api/placeholder/50/50" alt="GIF" class="link-gif">
+            <a href="https://example.com/link4" class="neon-link">MY INSTAGRAM</a>
+            <img src="/api/placeholder/50/50" alt="GIF" class="link-gif">
+        </div>
+    </div>
+
+    <script>
+        // Create background animation elements
+        const backgroundAnimation = document.getElementById('background-animation');
+        for (let i = 0; i < 20; i++) {
+            const span = document.createElement('span');
+            span.style.width = Math.random() * 30 + 10 + 'px';
+            span.style.height = span.style.width;
+            span.style.left = Math.random() * 100 + '%';
+            span.style.bottom = '-100px';
+            span.style.animationDelay = Math.random() * 5 + 's';
+            span.style.animationDuration = Math.random() * 10 + 10 + 's';
+            backgroundAnimation.appendChild(span);
+        }
+
+        // You can replace placeholder with actual GIFs by updating these URLs
+        const gifUrls = [
+            "/api/placeholder/50/50",
+            "/api/placeholder/50/50",
+            "/api/placeholder/50/50",
+            "/api/placeholder/50/50"
+        ];
+
+        // Replace the profile pic placeholder - in a real implementation you would use your actual GIF URL
+        document.getElementById('profile-pic').src = "/api/placeholder/150/150";
+
+        // Replace all GIF placeholders
+        const linkGifs = document.querySelectorAll('.link-gif');
+        linkGifs.forEach((gif, index) => {
+            gif.src = gifUrls[index % gifUrls.length];
+        });
+    </script>
+</body>
+</html>
